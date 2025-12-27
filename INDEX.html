@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BOOK STORE</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, sans-serif;
+}
+
+html,body{
+  width:100%;
+  height:100%;
+}
+
+/* ================= NAVBAR ================= */
+nav{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:55px;
+  background:linear-gradient(to right,gold,grey);
+  display:flex;
+  align-items:center;
+  padding:0 25px;
+  z-index:5;
+  box-shadow:0 4px 10px rgba(0,0,0,0.6);
+}
+
+nav a{
+  text-decoration:none;
+  color:black;
+  margin-right:30px;
+  font-weight:bold;
+  transition:0.3s;
+}
+
+nav a:hover{
+  color:white;
+  transform: scale(1.1);
+}
+
+nav img{
+  margin-left:auto;
+  width:95px;
+  height:40px;
+  object-fit:cover;
+}
+
+/* ================= VIDEO ================= */
+.video-container{
+  position:relative;
+  width:100%;
+  height:100vh;
+  overflow:hidden;
+}
+
+.video-container video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* DARK OVERLAY */
+.video-container::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.45);
+  z-index:1;
+}
+
+/* ================= CONTENT ================= */
+.content{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  text-align:center;
+  z-index:2;
+  color:white;
+}
+
+/* FLOATING BOOK IMAGE */
+.content img{
+  width:130px;
+  margin-bottom:20px;
+  animation: floatBook 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px gold);
+}
+
+@keyframes floatBook{
+  0%{ transform: translateY(0); }
+  50%{ transform: translateY(-20px); }
+  100%{ transform: translateY(0); }
+}
+
+/* TEXT ANIMATION */
+.content h1{
+  font-size:3.2rem;
+  color:gold;
+  text-shadow:0 0 20px black;
+  opacity:0;
+  animation: textReveal 2s ease forwards;
+}
+
+.content h1:nth-child(2){
+  animation-delay:0.5s;
+}
+
+.content h1:nth-child(3){
+  animation-delay:1s;
+}
+
+@keyframes textReveal{
+  from{
+    opacity:0;
+    transform:scale(0.7) translateY(50px);
+  }
+  to{
+    opacity:1;
+    transform:scale(1) translateY(0);
+  }
+}
+
+/* GLOW EFFECT */
+.glow{
+  animation: glowPulse 2s infinite alternate;
+}
+
+@keyframes glowPulse{
+  from{
+    text-shadow:0 0 10px gold;
+  }
+  to{
+    text-shadow:0 0 30px gold,0 0 60px orange;
+  }
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:768px){
+  .content h1{
+    font-size:2rem;
+  }
+
+  .content img{
+    width:90px;
+  }
+
+  nav a{
+    margin-right:15px;
+    font-size:14px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <a href="INDEX.html">Home</a>
+  <a href="about.html">About Us</a>
+  <a href="menu.html">Menu</a>
+  <a href="#">Contact Us</a>
+  <img src="./book3.webp" alt="Logo">
+</nav>
+
+<!-- VIDEO SECTION -->
+<div class="video-container">
+  <video autoplay muted loop>
+    <source src="./video.mp4" type="video/mp4">
+  </video>
+
+  <div class="content">
+    <img src="./book4.webp" alt="Book">
+    <h1 class="glow">Welcome</h1>
+    <h1 class="glow">To Our Book Store</h1>
+  </div>
+</div>
+
+</body>
+</html>
